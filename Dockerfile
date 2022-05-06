@@ -2,14 +2,13 @@ from ubuntu:latest
 
 WORKDIR backend-svr
 
-RUN sudo apt-get update && sudo apt-get install -y gnupg gnupg2
-
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 871920D1991BC93C
-
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     apt-get install -y wget && \
+    apt-get install -y gnupg2 pass && \
     rm -rf /var/lib/apt/lists/*
+
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 871920D1991BC93C
 
 RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
 
